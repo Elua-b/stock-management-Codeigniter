@@ -13,16 +13,14 @@
     margin: 0;
     box-sizing: border-box;
 }
-input{
 
-}
 
 .head{
 height: 10vh;
 display: flex;
-justify-content: space-between;
 padding-top: 20px;
 color: white;
+justify-content: space-between;
 width: 100%;
 float: left;
 background-color:#47ad83 ;
@@ -55,11 +53,6 @@ li{
     
     
 }
-input[type=search]{
-    padding-left: 10px;
-    border-radius: 5px;
-    border: none;
-  }
 li a{
     margin-left: 20px;
 }
@@ -110,7 +103,7 @@ li{
     background-color: #04AA6D;
     color: white;
   }
-  input[type=text], select {
+  input[type=text],input[type=number], select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -118,6 +111,9 @@ li{
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+  }
+  table{
+    margin-top: -20px;
   }
   
   input[type=submit] {
@@ -134,7 +130,11 @@ li{
   input[type=submit]:hover {
     background-color: #45a049;
   }
-  
+  input[type=search]{
+    padding-left: 10px;
+    border-radius: 5px;
+    border: none;
+  }
   div {
     border-radius: 5px;
     background-color: #f2f2f2;
@@ -148,12 +148,26 @@ li{
     text-align: center;
   }
   table{
-    margin-top: -8rem;
+    
   } 
   p{
     text-align: center;
    
   }
+  td a{
+    color: black;
+  }
+  .delete{
+    margin-left: 30px;
+    color: red;
+  }
+  .edit{
+    color: blue;
+  }
+ .actions{
+  padding-left:  20px;
+ }
+ 
     </style>
 </head>
 <body>
@@ -162,8 +176,10 @@ li{
             <i class="fa-solid fa-business-time"></i>
             <h1>Stock management</h1>
             <input type="search" placeholder="Search...">
-
+            
+            
         </div>
+        
         <div class="sidebar">
             <nav>
               <ul>
@@ -188,82 +204,50 @@ li{
         </div>
         <div class="body">
            
+                
                 <div>
-                    <!-- <table id="customers">
+                
+                    <table id="customers">
+                    
                         <tr>
-                          <th>Company</th>
-                          <th>Contact</th>
-                          <th>Country</th>
+                          <th>No</th>
+                          <th>Quantity</th>
+                          <th>ProductId</th>
+                          <th>Action</th>
+                          
                         </tr>
+                        
+                        <?php
+                        $no=1;
+                         if(!empty($outgoings)){foreach($outgoings as $user){?>
+                       <tr>
+                        <td><?php echo $no;?></td>
+                        <td><?php echo $user['quantity'];?></td>
+                        <td><?php echo $user['productId'];?></td>  
+                        <?php $no++; ?>
+                        <td class="actions"><a class="edit" href="<?php echo base_url().'index.php/outgoing/change2/'.$user['outgoingId']?>"><i class="fa-solid fa-pen"></i></a>
+                        <a class="delete" href="<?php echo base_url().'index.php/outgoing/delete/'.$user['outgoingId']?>"><i class="fa-solid fa-trash-can"></i></a>
+                        </td>
+                        </tr>
+                        <?php }}else{?>
                         <tr>
-                          <td>Alfreds Futterkiste</td>
-                          <td>Maria Anders</td>
-                          <td>Germany</td>
+                            <td>Records not found</td>
                         </tr>
-                        <tr>
-                          <td>Berglunds snabbköp</td>
-                          <td>Christina Berglund</td>
-                          <td>Sweden</td>
-                        </tr>
-                        <tr>
-                          <td>Centro comercial Moctezuma</td>
-                          <td>Francisco Chang</td>
-                          <td>Mexico</td>
-                        </tr>
-                        <tr>
-                          <td>Ernst Handel</td>
-                          <td>Roland Mendel</td>
-                          <td>Austria</td>
-                        </tr>
-                        <tr>
-                          <td>Island Trading</td>
-                          <td>Helen Bennett</td>
-                          <td>UK</td>
-                        </tr>
-                        <tr>
-                          <td>Königlich Essen</td>
-                          <td>Philip Cramer</td>
-                          <td>Germany</td>
-                        </tr>
-                        <tr>
-                          <td>Laughing Bacchus Winecellars</td>
-                          <td>Yoshi Tannamuri</td>
-                          <td>Canada</td>
-                        </tr>
-                        <tr>
-                          <td>Magazzini Alimentari Riuniti</td>
-                          <td>Giovanni Rovelli</td>
-                          <td>Italy</td>
-                        </tr>
-                        <tr>
-                          <td>North/South</td>
-                          <td>Simon Crowther</td>
-                          <td>UK</td>
-                        </tr>
-                        <tr>
-                          <td>Paris spécialités</td>
-                          <td>Marie Bertrand</td>
-                          <td>France</td>
-                        </tr>
-                      </table> -->
-                      <p>enter the items</p>
+                        <?php } ?>
+                      </table> 
                 </div>
         </div>
         <div class="sidebar2">
-          <form action="<?php echo base_url().'index.php/product/create' ?>" method="POST">
-            <h1>Products</h1>
-            <label for="fname">Product name</label>
-            <input type="text" id="fname" value="<?php echo set_value('product_Name',$user['product_Name']) ?>" name="product_Name" placeholder="Your product name..">
+          <form action="<?php echo base_url().'index.php/outgoing/display2' ?>" method="POST">
+            <h1>Outgoings</h1>
+            <label for="fname">quantity</label>
+            <input type="text" id="fname" value="<?php echo set_value('quantity') ?>" name="quantity" placeholder="Your quantity..">
         
-            <label for="brand">Brand</label>
-            <input type="text" id="lname" value="<?php echo set_value('brand',$user['brand']) ?>" name="brand" placeholder="Your brand name..">
+            <label for="brand">Product Id</label>
+            <input type="number" id="lname" value="<?php echo set_value('productId') ?>" name="productId" placeholder="Your productId...">
         
-            <label for="brand">Supplier Phone</label>
-            <input type="text" id="lname" value="<?php echo set_value('supplier_phone',$user['supplier_phone']) ?>" name="supplier_phone" placeholder="Your brand name..">
-            
-            <label for="brand">Supplier</label>
-            <input type="text" id="lname" value="<?php echo set_value('supplier',$user['supplier']) ?>" name="supplier" placeholder="Your brand name..">
-            <input type="submit" value="update">
+           
+            <input type="submit" value="Submit">
           </form>
         </div>
     </div>

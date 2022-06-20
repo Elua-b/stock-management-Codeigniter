@@ -8,6 +8,9 @@ class User_model extends CI_Model{
      
         $this->db->insert('users_table',$formArray);
     }
+    function validateUser($formArray){
+        $this->db->select('users_table',$formArray);
+    }
 }
 
 ?>

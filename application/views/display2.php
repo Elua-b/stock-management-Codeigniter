@@ -13,16 +13,18 @@
     margin: 0;
     box-sizing: border-box;
 }
-input{
 
-}
-
+input[type=search]{
+    padding-left: 10px;
+    border-radius: 5px;
+    border: none;
+  }
 .head{
 height: 10vh;
 display: flex;
-justify-content: space-between;
 padding-top: 20px;
 color: white;
+justify-content: space-between;
 width: 100%;
 float: left;
 background-color:#47ad83 ;
@@ -55,11 +57,6 @@ li{
     
     
 }
-input[type=search]{
-    padding-left: 10px;
-    border-radius: 5px;
-    border: none;
-  }
 li a{
     margin-left: 20px;
 }
@@ -110,7 +107,7 @@ li{
     background-color: #04AA6D;
     color: white;
   }
-  input[type=text], select {
+  input[type=text],input[type=number], select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -148,7 +145,7 @@ li{
     text-align: center;
   }
   table{
-    margin-top: -8rem;
+    margin-top: -10rem;
   } 
   p{
     text-align: center;
@@ -162,6 +159,7 @@ li{
             <i class="fa-solid fa-business-time"></i>
             <h1>Stock management</h1>
             <input type="search" placeholder="Search...">
+            
 
         </div>
         <div class="sidebar">
@@ -169,7 +167,7 @@ li{
               <ul>
                 <li>
                     <i class="fa-solid fa-cookie"></i>
-                    <a href="<?php echo base_url().'index.php/product/index';?>" id="pro">Products</a>
+                    <a href="<?php echo base_url().'index.php/product/index'; ?>" id="pro">Products</a>
                 </li>
                 <li>
                     <i class="fa-solid fa-truck-moving"></i>
@@ -250,20 +248,15 @@ li{
                 </div>
         </div>
         <div class="sidebar2">
-          <form action="<?php echo base_url().'index.php/product/create' ?>" method="POST">
-            <h1>Products</h1>
-            <label for="fname">Product name</label>
-            <input type="text" id="fname" value="<?php echo set_value('product_Name',$user['product_Name']) ?>" name="product_Name" placeholder="Your product name..">
+          <form action="<?php echo base_url().'index.php/outgoing/display2' ?>" method="POST">
+            <h1>Outgoings</h1>
+            <label for="fname">Quantity</label>
+            <input type="text" id="fname" value="<?php echo set_value('quantity') ?>" name="quantity" placeholder="Your product quantity..">
         
-            <label for="brand">Brand</label>
-            <input type="text" id="lname" value="<?php echo set_value('brand',$user['brand']) ?>" name="brand" placeholder="Your brand name..">
+            <label for="brand" >Product Id</label>
+            <input type="number" id="lname" value="<?php echo set_value('productId') ?>" name="productId" placeholder="Your productId..">
         
-            <label for="brand">Supplier Phone</label>
-            <input type="text" id="lname" value="<?php echo set_value('supplier_phone',$user['supplier_phone']) ?>" name="supplier_phone" placeholder="Your brand name..">
-            
-            <label for="brand">Supplier</label>
-            <input type="text" id="lname" value="<?php echo set_value('supplier',$user['supplier']) ?>" name="supplier" placeholder="Your brand name..">
-            <input type="submit" value="update">
+              <input type="submit" value="Submit">
           </form>
         </div>
     </div>

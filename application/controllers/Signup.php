@@ -33,6 +33,7 @@ function registerNow(){
         
         redirect(base_url().'index.php/signup/dashView');
     }
+    
         
         
 }

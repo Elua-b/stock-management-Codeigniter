@@ -195,7 +195,7 @@ li{
                 </li>
                 <li>
                     <i class="fa-solid fa-truck-moving"></i>
-                    <a id="inv" href="">Outgoing</a>
+                    <a id="inv" href="<?php echo base_url().'index.php/outgoing/index';?>">Outgoing</a>
                 </li>
                 <li>
                     <i class="fa-brands fa-intercom"></i>
