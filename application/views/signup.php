@@ -159,6 +159,12 @@ input{
                                <p><?php echo form_error('password') ?></p> 
 
                             </div>
+                            <div style="display: block; text-align:center;">
+                            <p>Already have account</p>
+                            <a href="<?php echo base_url().'index.php/login_controller/login'; ?>">Sign in</a>
+
+                            </div>
+                            
 
                             <button type="submit">
                                 <p class="par">Submit</p>

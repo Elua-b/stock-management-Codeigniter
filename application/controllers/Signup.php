@@ -26,7 +26,9 @@ function registerNow(){
             $formArray=array();
             $formArray['email']=$this->input->post('email');
             $formArray['username']=$this->input->post('username');
-             $formArray['password']=$this->input->post('password');
+            $password=md5($this->input->post('password'));
+             $formArray['password']=$password;
+            //  $pass=hash("SHA512",$formArray['password']);
               $this->load->model('User_model');
               $this->User_model->insertUser($formArray);
         
