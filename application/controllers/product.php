@@ -18,9 +18,9 @@ class Product extends CI_Controller
 
    function  create()
    {
-      $this->form_validation->set_rules('product_Name', 'Product_Name', 'required');
-      $this->form_validation->set_rules('brand', 'Brand', 'required');
-      $this->form_validation->set_rules('supplier_phone', 'Supplier_Name', 'required');
+      $this->form_validation->set_rules('product_Name', 'trim|Product_Name', 'required');
+      $this->form_validation->set_rules('brand', 'Brand', 'trim|required');
+      $this->form_validation->set_rules('supplier_phone', 'trim|Supplier_Name', 'required');
       if ($this->form_validation->run()==false) {
          $this->load->view('create');
       } else {
@@ -35,9 +35,9 @@ class Product extends CI_Controller
     $user=$this->Products_model->getUser($userId);
     $data=array();
     $data['user']=$user;
-    $this->form_validation->set_rules('product_Name', 'Product_Name', 'required');
-      $this->form_validation->set_rules('brand', 'Brand', 'required');
-      $this->form_validation->set_rules('supplier_phone', 'Supplier_Name', 'required');
+    $this->form_validation->set_rules('product_Name', 'trim|Product_Name', 'required');
+      $this->form_validation->set_rules('brand', 'Brand', 'trim|required');
+      $this->form_validation->set_rules('supplier_phone', 'trim|Supplier_Name', 'required');
     if($this->form_validation->run()==false){
        $this->load->view('edit',$data);
     }

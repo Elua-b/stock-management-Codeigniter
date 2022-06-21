@@ -180,7 +180,11 @@ li{
     <div>
         <div class="head">
             <i class="fa-solid fa-business-time"></i>
+           
             <h1>Stock management</h1>
+            
+            
+            
             <input type="search" placeholder="Search...">
             
             
@@ -250,15 +254,16 @@ li{
             <h1>Products</h1>
             <label for="fname">Product name</label>
             <input type="text" id="fname" value="<?php echo set_value('product_Name') ?>" name="product_Name" placeholder="Your product name..">
-        
+            <p><?php echo form_error('product_Name') ?></p> 
             <label for="brand">Brand</label>
             <input type="text" id="lname" value="<?php echo set_value('brand') ?>" name="brand" placeholder="Your brand name..">
-        
+            <p><?php echo form_error('brand') ?></p> 
             <label for="brand">Supplier Phone</label>
             <input type="text" id="lname" value="<?php echo set_value('supplier_phone') ?>" name="supplier_phone" placeholder="Your brand name..">
-            
+            <p><?php echo form_error('supplier_phone') ?></p> 
             <label for="brand">Supplier</label>
             <input type="text" id="lname" value="<?php echo set_value('supplier') ?>" name="supplier" placeholder="Your brand name..">
+            <p><?php echo form_error('supplier') ?></p> 
             <input type="submit" value="Submit">
           </form>
         </div>
