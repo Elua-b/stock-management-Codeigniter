@@ -282,10 +282,10 @@
                 <h1>Inventories</h1>
                 <label for="fname">quantity</label>
                 <input type="text" id="fname" value="<?php echo set_value('quantity', $user['quantity']) ?>" name="quantity" placeholder="Your quantity..">
-
+                <p><?php echo form_error('quantity') ?></p> 
                 <label for="brand">product Id</label>
                 <input type="number" id="lname" value="<?php echo set_value('productId', $user['productId']) ?>" name="productId" placeholder="Your product Id..">
-
+                <p><?php echo form_error('productId') ?></p> 
 
                 <input type="submit" value="update" name="update">
             </form>

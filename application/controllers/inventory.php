@@ -18,8 +18,8 @@ class Inventory extends CI_Controller
 
    function  display()
    {
-      $this->form_validation->set_rules('quantity', 'Quantity', 'required');
-      $this->form_validation->set_rules('productId', 'ProductId', 'required');
+      $this->form_validation->set_rules('quantity', 'Quantity', 'trim|required');
+      $this->form_validation->set_rules('productId', 'ProductId', 'trim|required');
      
       if ($this->form_validation->run()==false) {
          $this->load->view('display');
@@ -35,8 +35,8 @@ class Inventory extends CI_Controller
     $user=$this->Inventory_model->getUser($userId);
     $data=array();
     $data['user']=$user;
-    $this->form_validation->set_rules('quantity', 'Quantity', 'required');
-      $this->form_validation->set_rules('productId', 'ProductId', 'required');
+    $this->form_validation->set_rules('quantity', 'Quantity', 'trim|required');
+      $this->form_validation->set_rules('productId', 'ProductId', 'trim|required');
     if($this->form_validation->run()==false){
        $this->load->view('change',$data);
     }

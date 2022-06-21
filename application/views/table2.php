@@ -242,10 +242,10 @@ li{
             <h1>Outgoings</h1>
             <label for="fname">quantity</label>
             <input type="text" id="fname" value="<?php echo set_value('quantity') ?>" name="quantity" placeholder="Your quantity..">
-        
+            <p><?php echo form_error('quantity') ?></p> 
             <label for="brand">Product Id</label>
             <input type="number" id="lname" value="<?php echo set_value('productId') ?>" name="productId" placeholder="Your productId...">
-        
+            <p><?php echo form_error('productId') ?></p> 
            
             <input type="submit" value="Submit">
           </form>
